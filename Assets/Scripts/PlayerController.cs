@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float maxSpeed = 7;
-    [SerializeField] private float jumpHeight = 150;
+    [SerializeField] private float jumpHeight = 375;
 
     [SerializeField] private Transform groundChecker;
     [SerializeField] private LayerMask groundLayer;
@@ -38,13 +38,16 @@ public class PlayerController : MonoBehaviour
         rigidbody2d.velocity = new(move * maxSpeed, rigidbody2d.velocity.y);
         if ((move < 0 && isFacingRight) || (move > 0 && !isFacingRight)) Flip();
 
-        isGrounded = Physics2D.OverlapCircle(groundChecker.position, .1f, groundLayer);
+        isGrounded = Physics2D.OverlapCircle(groundChecker.position, .15f, groundLayer);
         animator.SetBool("isGrounded", isGrounded);
         animator.SetFloat("verticalSpeed", rigidbody2d.velocity.y);
     }
     private void Flip()
     {
         isFacingRight = !isFacingRight;
-        transform.localScale = new(transform.localScale.x * -1, transform.localScale.y);
+        transform.localScale = new(
+            x:transform.localScale.x * -1,
+            y: transform.localScale.y,
+            z: transform.localScale.z);
     }
 }
