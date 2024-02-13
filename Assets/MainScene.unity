@@ -451,6 +451,7 @@ GameObject:
   - component: {fileID: 1021716973}
   - component: {fileID: 1021716972}
   - component: {fileID: 1021716975}
+  - component: {fileID: 1021716976}
   m_Layer: 6
   m_Name: spikeyRock
   m_TagString: Enemy
@@ -574,6 +575,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 5
+--- !u!114 &1021716976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1021716971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f6b3997856fa2a47a21b1305597c17f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0
+  damageRate: 1
+  pushForce: 15
 --- !u!1001 &1240483150
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -703,6 +719,7 @@ GameObject:
   - component: {fileID: 1555841627}
   - component: {fileID: 1555841632}
   - component: {fileID: 1555841633}
+  - component: {fileID: 1555841634}
   m_Layer: 0
   m_Name: CHARACTER
   m_TagString: Player
@@ -928,6 +945,20 @@ MonoBehaviour:
     m_Bits: 8
   gunMuzzle: {fileID: 759153837}
   projectile: {fileID: 9117586924902374374, guid: 876b60d2a3db7614fbab09f1cdc9b913, type: 3}
+--- !u!114 &1555841634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555841626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2c3a46856b510349aff10ec1f772134, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 10
+  bloodDropsFX: {fileID: 5292278651565542267, guid: e22a5460bb632e24e959d46990969b71, type: 3}
 --- !u!1 &1590004535
 GameObject:
   m_ObjectHideFlags: 0
