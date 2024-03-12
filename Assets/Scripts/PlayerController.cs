@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rigidbody2d = GetComponent<Rigidbody2D>();
+
         isFacingRight = true;
         isGrounded = false;
         nextFire = 0;
