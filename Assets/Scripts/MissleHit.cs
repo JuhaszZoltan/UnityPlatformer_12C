@@ -4,6 +4,7 @@ public class MissleHit : MonoBehaviour
 {
     [SerializeField] private float damage = 2f;
     [SerializeField] private GameObject explosionEcffect;
+    [SerializeField] private GameObject smokeTrailFX;
 
     private ProjectileController controller;
 
