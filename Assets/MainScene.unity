@@ -202,7 +202,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 15, y: 3}
+  m_Size: {x: 14, y: 3}
   m_EdgeRadius: 0
 --- !u!50 &14717808
 Rigidbody2D:
@@ -220,7 +220,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 3
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 579922ff90adf7340902ea3c0a8b9ae7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -240,7 +240,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 14717805}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 579922ff90adf7340902ea3c0a8b9ae7, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -279,7 +279,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 7
-  graphics: {fileID: 1460167178}
+  chargeDelay: 0.5
+  flipTime: 3
 --- !u!1 &93072443
 GameObject:
   m_ObjectHideFlags: 0

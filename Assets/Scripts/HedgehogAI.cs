@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class HedgehogAI : MonoBehaviour
 {
-    [SerializeField] float runSpeed = 7f;
-    [SerializeField] GameObject graphics;
+    [SerializeField] private float runSpeed = 7f;
+    [SerializeField] private float chargeDelay = .5f;
+    [SerializeField] private float flipTime = 3f;
 
     private Animator animator;
     private Rigidbody2D rigidbody2d;
 
     private bool facintgRight = false;
     private bool canFlip = true;
-    private float flipTime = 3f;
-    private float flipChance = 0f;
-    private float chargeTime = 2f;
-
     private bool isCharging = false;
+
+    private float startChargeTime = 0f;
+    private float nextFlip = 0f;
 
 
     private void Start()
@@ -25,20 +25,52 @@ public class HedgehogAI : MonoBehaviour
 
     private void Update()
     {
-        if (Time.time > flipChance)
+        if (canFlip && Time.time > nextFlip)
         {
             if (Random.Range(0, 10) >= 5) FlipFacing();
-            flipChance = Time.time + flipTime;
+            nextFlip = Time.time + flipTime;
+        }
+
+        animator.SetBool("isCharging", isCharging);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            if (facintgRight != other.transform.position.x > transform.position.x) FlipFacing();
+
+            canFlip = false;
+            isCharging = true;
+            startChargeTime = Time.time + chargeDelay;
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (isCharging && Time.time > startChargeTime && other.CompareTag("Player"))
+        {
+            rigidbody2d.AddForce(new Vector2(x: facintgRight ? +1 : -1, y: 0) * runSpeed);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            canFlip = true;
+            isCharging = false;
+            rigidbody2d.velocity = Vector2.zero;
         }
     }
 
     private void FlipFacing()
     {
-        if (!canFlip) return;
-        graphics.transform.localScale =
+        facintgRight = !facintgRight;
+        transform.localScale =
             new Vector3(
-                graphics.transform.localScale.x * -1,
-                graphics.transform.localScale.y,
-                graphics.transform.localScale.z);
+                transform.localScale.x * -1,
+                transform.localScale.y,
+                transform.localScale.z);
     }
 }

@@ -16,7 +16,7 @@ public class ProjectileController : MonoBehaviour
 
     public void Stop()
     {
-        transform.localRotation = Quaternion.Euler(-90, -90, 0);
+        transform.localRotation = Quaternion.Euler(0, 0, -90);
         rigidbody2d.velocity = new(0, 0);
     }
 }
