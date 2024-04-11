@@ -13,14 +13,14 @@ public class EnemyDamage : MonoBehaviour
         nextDamage = 0f;
     }
 
-    private void OnTriggerStay2D(Collider2D player)
+    private void OnTriggerStay2D(Collider2D other)
     {
-        if (player.CompareTag("Player") && nextDamage < Time.time)
+        if (other.CompareTag("Player") && nextDamage < Time.time)
         {
-            PlayerHealth playerHealth = player.gameObject.GetComponent<PlayerHealth>();
+            PlayerHealth playerHealth = other.gameObject.GetComponent<PlayerHealth>();
             playerHealth.TakeDamage(damage);
             nextDamage = Time.time + damageRate;
-            PushBack(player.transform);
+            PushBack(other.transform);
         }
     }
 
