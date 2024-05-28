@@ -43,3 +43,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: CannonPlant
+    uniqueID: 4080457193
+    locked: 0
